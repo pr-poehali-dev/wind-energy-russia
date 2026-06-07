@@ -4,8 +4,15 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 99%;
+    --foreground: 220 15% 12%;
+
+    --doc-accent: 213 90% 42%;
+    --doc-accent-light: 213 90% 95%;
+    --doc-line: 220 15% 90%;
+    --doc-muted: 220 10% 55%;
+    --doc-surface: 220 20% 97%;
+    --doc-dark: 220 25% 15%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -97,5 +104,68 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "IBM Plex Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "IBM Plex Sans", sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .doc-accent {
+    color: hsl(var(--doc-accent));
+  }
+  .doc-muted {
+    color: hsl(var(--doc-muted));
+  }
+  .bg-doc-accent {
+    background-color: hsl(var(--doc-accent));
+  }
+  .bg-doc-accent-light {
+    background-color: hsl(var(--doc-accent-light));
+  }
+  .bg-doc-surface {
+    background-color: hsl(var(--doc-surface));
+  }
+  .border-doc {
+    border-color: hsl(var(--doc-line));
+  }
+  .text-doc-dark {
+    color: hsl(var(--doc-dark));
+  }
+
+  .section-enter {
+    animation: sectionFadeIn 0.5s ease both;
+  }
+
+  @keyframes sectionFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .nav-active {
+    color: hsl(var(--doc-accent));
+    border-left-color: hsl(var(--doc-accent));
+    background-color: hsl(var(--doc-accent-light));
+  }
+
+  .chart-bar {
+    transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .mono {
+    font-family: "IBM Plex Mono", monospace;
   }
 }
